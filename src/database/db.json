@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Walton Phone Prime",
+    "price": 200,
+    "brand": "Walton",
+    "category": "Smartphone",
+    "stock": 15,
+    "rating": 4.3,
+    "color": "Black",
+    "description": "Affordable  smartphone with a long-lasting battery and smooth performance for daily tasks."
+  },
+  {
+    "id": 2,
+    "name": "Jamuna Phone Prime+",
+    "price": 300,
+    "brand": "Jamuna",
+    "category": "Smartphone",
+    "stock": 10,
+    "rating": 4.1,
+    "color": "Blue",
+    "description": "Mid-range smartphone featuring a modern design, fast charging, and good camera quality."
+  },
+  {
+    "id": 3,
+    "name": "Samsung Galaxy A15",
+    "price": 450,
+    "brand": "Samsung",
+    "category": "Smartphone",
+    "stock": 20,
+    "rating": 4.7,
+    "color": "White",
+    "description": "Popular Android smartphone with AMOLED display, reliable performance, and excellent battery life."
+  },
+  {
+    "id": 4,
+    "name": "iPhone 13",
+    "price": 1200,
+    "brand": "Apple",
+    "category": "Smartphone",
+    "stock": 5,
+    "rating": 4.9,
+    "color": "Midnight",
+    "description": "Premium smartphone with powerful performance, advanced cameras, and iOS ecosystem support."
+  },
+  {
+    "id": 5,
+    "name": "Xiaomi Redmi Note 13",
+    "price": 350,
+    "brand": "Xiaomi",
+    "category": "Smartphone",
+    "stock": 18,
+    "rating": 4.5,
+    "color": "Green",
+    "description": "Feature-packed smartphone offering great value, high refresh rate display, and strong battery backup."
+  },
+  {
+    "id": 6,
+    "name": "Realme Narzo 60",
+    "price": 280,
+    "brand": "Realme",
+    "category": "Smartphone",
+    "stock": 12,
+    "rating": 4.2,
+    "color": "Purple",
+    "description": "Stylish smartphone designed for gaming and entertainment with smooth multitasking performance."
+  },
+  {
+    "id": 7,
+    "name": "Oppo F21 Pro",
+    "price": 500,
+    "brand": "Oppo",
+    "category": "Smartphone",
+    "stock": 8,
+    "rating": 4.4,
+    "color": "Orange",
+    "description": "Camera-focused smartphone with sleek design, vibrant display, and fast charging support."
+  },
+  {
+    "id": 8,
+    "name": "Vivo V29",
+    "price": 620,
+    "brand": "Vivo",
+    "category": "Smartphone",
+    "stock": 9,
+    "rating": 4.6,
+    "color": "Red",
+    "description": "Premium Android phone with excellent portrait photography features and elegant build quality."
+  },
+  {
+    "id": 9,
+    "name": "Nokia G42",
+    "price": 260,
+    "brand": "Nokia",
+    "category": "Smartphone",
+    "stock": 14,
+    "rating": 4,
+    "color": "Gray",
+    "description": "Durable smartphone with clean Android experience and dependable battery performance."
+  },
+  {
+    "id": 10,
+    "name": "Google Pixel 8",
+    "price": 950,
+    "brand": "Google",
+    "category": "Smartphone",
+    "stock": 6,
+    "rating": 4.8,
+    "color": "Hazel",
+    "description": "Flagship smartphone powered by Google AI with exceptional camera and software experience."
+  },
+  {
+    "id": 1778593023735,
+    "name": "Xiomi Phone Prime",
+    "price": 200,
+    "brand": "Xiomi",
+    "category": "Smartphone",
+    "stock": 15,
+    "rating": 4.3,
+    "color": "Black",
+    "description": "Affordable smartphone with a long-lasting battery and smooth performance for daily tasks."
+  },
+  {
+    "id": 1778593314744,
+    "name": "Xiomi Phone Prime - 2",
+    "price": 1500,
+    "brand": "Xiomi",
+    "category": "Smartphone",
+    "stock": 15,
+    "rating": 4.3,
+    "color": "Black",
+    "description": "Affordable smartphone with a long-lasting battery and smooth performance for daily tasks."
+  }
+]
