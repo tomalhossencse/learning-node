@@ -2,6 +2,7 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { insertProduct, readProduct } from "../service/product.service";
 import type { Iproduct } from "../types/product.type";
 import { parseBody } from "../utility/parseBody";
+import { sendResponse } from "../utility/sendResponse";
 
 export const productController = async (
   req: IncomingMessage,
@@ -19,45 +20,62 @@ export const productController = async (
   // all product
 
   if (url === "/products" && method === "GET") {
-    const products = readProduct();
+    try {
+      const products = readProduct();
 
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(
-      JSON.stringify({
-        message: "Products Retrive Successfully",
-        data: products,
-      }),
-    );
+      return sendResponse(
+        res,
+        200,
+        true,
+        "Products Retrive successfully",
+        products,
+      );
+    } catch (error) {
+      return sendResponse(res, 500, false, "Something went Wrong !", error);
+    }
   } else if (method === "GET" && id !== null) {
     const products = readProduct();
 
-    const singleProduct = products.find((p: Iproduct) => p.id === id) || {};
+    const singleProduct = products.find((p: Iproduct) => p.id === id);
+
     console.log(singleProduct);
 
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(
-      JSON.stringify({
-        message: "single Products Retrive Successfully",
-        data: singleProduct,
-      }),
-    );
+    if (!singleProduct) {
+      return sendResponse(res, 404, false, "product not found");
+    } else {
+      try {
+        return sendResponse(
+          res,
+          200,
+          true,
+          "single product retrive Successfully",
+          singleProduct,
+        );
+      } catch (error) {
+        return sendResponse(res, 500, false, "something went wrong !", error);
+      }
+    }
   } else if (method === "POST" && url === "/products") {
-    const body = await parseBody(req);
-    const products = readProduct();
-    const newProduct = {
-      id: Date.now(),
-      ...body,
-    };
-    // console.log("new product : ", newProduct);
-    products.push(newProduct); // full array [] after insert
-    insertProduct(products);
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(
-      JSON.stringify({
-        message: "Product created Successfully",
-        data: newProduct,
-      }),
-    );
+    try {
+      const body = await parseBody(req);
+      const products = readProduct();
+      const newProduct = {
+        id: Date.now(),
+        ...body,
+      };
+      // console.log("new product : ", newProduct);
+      products.push(newProduct); // full array [] after insert
+      insertProduct(products);
+      return sendResponse(
+        res,
+        200,
+        true,
+        "Product created Successfully",
+        newProduct,
+      );
+    } catch (error) {
+      return sendResponse(res, 500, false, "something went wrong !", error);
+    }
   } else if (method === "PUT" && id !== null) {
     const body = await parseBody(req);
     const products = readProduct();
@@ -65,30 +83,47 @@ export const productController = async (
     // console.log(index);
 
     if (index < 0) {
-      res.writeHead(404, { "content-type": "application/json" });
-      res.end(
-        JSON.stringify({
-          message: "Product Not Found",
-          data: null,
-        }),
-      );
+      return sendResponse(res, 404, false, "Product Not Found", null);
     }
     // console.log(products[index]);
-    products[index] = {
-      id: products[index].id,
-      ...body,
-    };
 
-    insertProduct(products);
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(
-      JSON.stringify({
-        message: "Product updated Successfully",
-        data: products[index],
-      }),
-    );
+    try {
+      products[index] = {
+        id: products[index].id,
+        ...body,
+      };
+
+      insertProduct(products);
+      return sendResponse(
+        res,
+        200,
+        true,
+        "Product updated Successfully",
+
+        products[index],
+      );
+    } catch (error) {
+      return sendResponse(res, 500, false, "something went wrong !", error);
+    }
+  } else if (method === "DELETE" && id !== null) {
+    const products = readProduct();
+
+    const index = products.findIndex((p: Iproduct) => p.id === id);
+
+    if (index < 0) {
+      return sendResponse(res, 404, false, "Product Not Found", null);
+    }
+
+    try {
+      products.splice(index, 1);
+
+      insertProduct(products);
+
+      return sendResponse(res, 200, true, "Product deleted Successfully");
+    } catch (error) {
+      return sendResponse(res, 500, false, "Something went Wrong !", error);
+    }
   } else {
-    res.writeHead(404, { "content-type": "application/json" });
-    res.end(JSON.stringify({ message: "route not found" }));
+    return sendResponse(res, 404, false, "route not found", null);
   }
 };

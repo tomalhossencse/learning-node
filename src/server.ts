@@ -11,5 +11,5 @@ const server: Server = createServer(
 );
 
 server.listen(3000, () => {
-  console.log("server is running on the port 5000");
+  console.log("server is running on the port 3000");
 });
