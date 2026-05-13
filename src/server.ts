@@ -1,6 +1,7 @@
 import { createServer, IncomingMessage, Server, ServerResponse } from "http";
 import { json } from "stream/consumers";
 import { routeHandler } from "./routes/route";
+import config from "./config";
 
 const server: Server = createServer(
   (req: IncomingMessage, res: ServerResponse) => {
@@ -10,6 +11,6 @@ const server: Server = createServer(
   },
 );
 
-server.listen(3000, () => {
-  console.log("server is running on the port 3000");
+server.listen(config.port, () => {
+  console.log(`server is running on the port ${config.port}`);
 });
